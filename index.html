@@ -8,7 +8,7 @@
     <script src="https://unpkg.com/lucide@latest"></script>
     <style>
         :root {
-            --bg: #f5f5f7; /* Gris Apple */
+            --bg: #f5f5f7;
             --card-bg: #ffffff;
             --text: #1d1d1f;
             --accent: #0071e3;
@@ -39,7 +39,7 @@
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             display: flex;
             flex-direction: column;
-            text-decoration: none; /* Quitar subrayado del enlace */
+            text-decoration: none;
             color: inherit;
         }
 
@@ -66,25 +66,28 @@
         .card:hover .foto-b { opacity: 1; }
 
         h2 { font-size: 22px; font-weight: 600; margin: 10px 0; }
-        .price { font-size: 18px; color: var(--text); margin-bottom: 20px; font-weight: 400; }
+        .apple-desc { color: var(--gray); font-size: 14px; margin-bottom: 10px; }
+        .price { font-size: 18px; color: var(--text); margin-bottom: 20px; font-weight: 600; }
 
-        /* Botón Añadir (No afecta el enlace de la tarjeta) */
         .btn-add {
             background: var(--accent);
             color: white;
             border: none;
-            padding: 10px 20px;
+            padding: 12px 25px;
             border-radius: 20px;
             cursor: pointer;
             font-weight: 500;
             z-index: 10;
             display: inline-flex;
             align-items: center;
+            justify-content: center;
             gap: 8px;
             margin-top: auto;
+            transition: background 0.2s;
         }
 
-        /* BARRA CARRITO */
+        .btn-add:hover { background: #0077ed; }
+
         .cart-bar {
             position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%);
             background: rgba(0, 0, 0, 0.85); backdrop-filter: blur(20px);
@@ -100,78 +103,83 @@
 
 <header>
     <h1>TecnoMarket</h1>
-    <p class="subtitle">Descubre el futuro en tus manos.</p>
+    <p class="subtitle">Innovación que inspira.</p>
 </header>
 
 <div class="container">
     <div class="grid">
         
         <div class="card">
-            <a href="001.html" style="text-decoration:none; color:inherit; display:block; margin-bottom:15px;">
+            <a href="001.html" style="text-decoration:none; color:inherit;">
                 <div class="contenedor-foto">
                     <img src="img/001A.jpeg" class="foto-a">
                     <img src="img/001B.jpeg" class="foto-b">
                 </div>
                 <h2>Parlante Touch</h2>
-                <div class="price">S/ 120.00</div>
+                <p class="apple-desc">Sonido que se siente. Control que fluye.</p>
+                <div class="price">S/ 20</div>
             </a>
-            <button class="btn-add" onclick="addToCart('Parlante Touch', 120)">
+            <button class="btn-add" onclick="addToCart('Parlante Touch', 20)">
                 <i data-lucide="plus"></i> Añadir
             </button>
         </div>
 
         <div class="card">
-            <a href="002.html" style="text-decoration:none; color:inherit; display:block; margin-bottom:15px;">
+            <a href="002.html" style="text-decoration:none; color:inherit;">
                 <div class="contenedor-foto">
                     <img src="img/002A.jpeg" class="foto-a">
                     <img src="img/002B.jpeg" class="foto-b">
                 </div>
-                <h2>Ventilador con Humificador</h2>
-                <div class="price">S/ 150.00</div>
+                <h2>Ventilador Humificador</h2>
+                <p class="apple-desc">Frescura en cada gota. Silencio puro.</p>
+                <div class="price">S/ 25</div>
             </a>
-            <button class="btn-add" onclick="addToCart('Ventilador con Humificador', 150)">
+            <button class="btn-add" onclick="addToCart('Ventilador Humificador', 25)">
                 <i data-lucide="plus"></i> Añadir
             </button>
         </div>
 
         <div class="card">
-            <a href="003.html" style="text-decoration:none; color:inherit; display:block; margin-bottom:15px;">
+            <a href="003.html" style="text-decoration:none; color:inherit;">
                 <div class="contenedor-foto">
                     <img src="img/003A.jpeg" class="foto-a">
                     <img src="img/003B.jpeg" class="foto-b">
                 </div>
                 <h2>Aire Acondicionado</h2>
-                <div class="price">S/ 450.00</div>
+                <p class="apple-desc">Domina el clima de tu espacio.</p>
+                <div class="price">S/ 15</div>
             </a>
-            <button class="btn-add" onclick="addToCart('Aire Acondicionado', 450)">
+            <button class="btn-add" onclick="addToCart('Aire Acondicionado', 15)">
                 <i data-lucide="plus"></i> Añadir
             </button>
         </div>
 
         <div class="card">
-            <a href="004.html" style="text-decoration:none; color:inherit; display:block; margin-bottom:15px;">
+            <a href="004.html" style="text-decoration:none; color:inherit;">
                 <div class="contenedor-foto">
                     <img src="img/004A.jpeg" class="foto-a">
                     <img src="img/004B.jpeg" class="foto-b">
                 </div>
                 <h2>Ventilador de Cuello</h2>
-                <div class="price">S/ 85.00</div>
+                <p class="apple-desc">Tu propia corriente de aire personal.</p>
+                <div class="price">S/ 15</div>
             </a>
-            <button class="btn-add" onclick="addToCart('Ventilador de Cuello', 85)">
+            <button class="btn-add" onclick="addToCart('Ventilador de Cuello', 15)">
                 <i data-lucide="plus"></i> Añadir
             </button>
         </div>
 
         <div class="card">
-            <a href="005.html" style="text-decoration:none; color:inherit; display:block; margin-bottom:15px;">
+            <a href="005.html" style="text-decoration:none; color:inherit;">
                 <div class="contenedor-foto">
                     <img src="img/005A.jpeg" class="foto-a">
                     <img src="img/005B.jpeg" class="foto-b">
                 </div>
                 <h2>Set Teclado y Mouse</h2>
-                <div class="price">S/ 190.00</div>
+                <p class="apple-desc">Precisión sin cables. Minimalismo puro.</p>
+                <div class="price">S/ 15</div>
             </a>
-            <button class="btn-add" onclick="addToCart('Set Teclado y Mouse', 190)">
+            <button class="btn-add" onclick="addToCart('Set Teclado y Mouse', 15)">
                 <i data-lucide="plus"></i> Añadir
             </button>
         </div>
@@ -202,10 +210,10 @@
 
         if (cart.length > 0) {
             cartBar.style.display = 'flex';
-            cartCount.innerText = `${cart.length} items seleccionados`;
+            cartCount.innerText = `${cart.length} productos listos`;
             let total = cart.reduce((sum, item) => sum + item.price, 0);
             let message = "¡Hola TecnoMarket! 👋 Quisiera estos productos:\n\n";
-            cart.forEach((item, i) => message += `${i+1}. ${item.name} (S/ ${item.price})\n`);
+            cart.forEach((item, i) => message += `${i+1}. ${item.name} - S/ ${item.price}\n`);
             message += `\n*Total: S/ ${total}*`;
             wspLink.href = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
         }
