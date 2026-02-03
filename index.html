@@ -1,35 +1,179 @@
-<style>
-    :root {
-        --apple-bg: #f5f5f7;
-        --apple-text: #1d1d1f;
-    }
-    body { font-family: 'SF Pro Display', sans-serif; background-color: var(--apple-bg); color: var(--apple-text); margin: 0; padding: 20px; text-align: center; }
-    .grid-tienda { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; padding: 40px; }
-    .producto { background: white; padding: 30px; border-radius: 20px; box-shadow: 0 4px 20px rgba(0,0,0,0.05); transition: 0.3s; }
-    .producto:hover { transform: translateY(-5px); }
-    .precio { font-size: 24px; font-weight: 600; margin: 15px 0; }
-    .btn-comprar { background: #0071e3; color: white; padding: 12px 24px; border-radius: 20px; text-decoration: none; display: inline-block; font-weight: 500; }
-</style>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TecnoMarket | Premium Store</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        :root {
+            --bg: #f5f5f7;
+            --card-bg: #ffffff;
+            --text: #1d1d1f;
+            --accent: #0071e3;
+            --gray: #86868b;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            margin: 0;
+            padding-bottom: 100px;
+        }
+
+        header { padding: 60px 20px; text-align: center; background: white; }
+        h1 { font-size: 42px; font-weight: 600; margin: 0; }
+        
+        .container { max-width: 1000px; margin: 40px auto; padding: 0 20px; }
+        
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border-radius: 20px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover { transform: translateY(-5px); }
+        .card h2 { font-size: 22px; margin: 15px 0 5px; }
+        .price { font-size: 18px; color: var(--accent); font-weight: 600; margin-bottom: 20px; }
+
+        .btn-add {
+            background: var(--accent);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        /* BARRA DEL CARRITO FLOTANTE */
+        .cart-bar {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(15px);
+            color: white;
+            padding: 15px 30px;
+            border-radius: 50px;
+            display: none; /* Se muestra cuando hay items */
+            align-items: center;
+            gap: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            z-index: 1000;
+            width: 90%;
+            max-width: 500px;
+            justify-content: space-between;
+        }
+
+        .btn-whatsapp {
+            background: #25d366;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+    </style>
+</head>
+<body>
 
 <header>
     <h1>TecnoMarket</h1>
-    <p>Lo último en tecnología y accesorios.</p>
+    <p style="color: var(--gray)">Selecciona tus productos y recíbelos por WhatsApp</p>
 </header>
 
-<div class="grid-tienda">
-    <div class="producto">
-        <img src="https://via.placeholder.com/200" alt="iPhone 15">
-        <h2>iPhone 15 Pro</h2>
-        <p>Titanio natural. El chip más potente.</p>
-        <div class="precio">S/ 4,299</div>
-        <a href="https://wa.me/TUNUMERO" class="btn-comprar">Pedir por WhatsApp</a>
-    </div>
+<div class="container">
+    <div class="grid">
+        <div class="card">
+            <i data-lucide="smartphone" size="40"></i>
+            <h2>iPhone 15 Pro</h2>
+            <div class="price">S/ 4299</div>
+            <button class="btn-add" onclick="addToCart('iPhone 15 Pro', 4299)">
+                <i data-lucide="plus"></i> Agregar
+            </button>
+        </div>
 
-    <div class="producto">
-        <img src="https://via.placeholder.com/200" alt="Audífonos">
-        <h2>AirPods Pro (2da Gen)</h2>
-        <p>Cancelación de ruido mejorada.</p>
-        <div class="precio">S/ 949</div>
-        <a href="https://wa.me/TUNUMERO" class="btn-comprar">Pedir por WhatsApp</a>
+        <div class="card">
+            <i data-lucide="headphones" size="40"></i>
+            <h2>AirPods Pro</h2>
+            <div class="price">S/ 949</div>
+            <button class="btn-add" onclick="addToCart('AirPods Pro', 949)">
+                <i data-lucide="plus"></i> Agregar
+            </button>
+        </div>
+
+        <div class="card">
+            <i data-lucide="battery-charging" size="40"></i>
+            <h2>Cargador 20W</h2>
+            <div class="price">S/ 120</div>
+            <button class="btn-add" onclick="addToCart('Cargador 20W', 120)">
+                <i data-lucide="plus"></i> Agregar
+            </button>
+        </div>
     </div>
 </div>
+
+<div id="cartBar" class="cart-bar">
+    <div>
+        <span id="cartCount">0</span> items seleccionados
+    </div>
+    <a id="wspLink" href="#" class="btn-whatsapp">
+        <i data-lucide="message-circle"></i> Pedir por WhatsApp
+    </a>
+</div>
+
+<script>
+    let cart = [];
+    const WHATSAPP_NUMBER = "51942950226";
+
+    function addToCart(name, price) {
+        cart.push({ name, price });
+        updateCartUI();
+    }
+
+    function updateCartUI() {
+        const cartBar = document.getElementById('cartBar');
+        const cartCount = document.getElementById('cartCount');
+        const wspLink = document.getElementById('wspLink');
+
+        if (cart.length > 0) {
+            cartBar.style.display = 'flex';
+            cartCount.innerText = cart.length;
+
+            // Crear el mensaje de WhatsApp
+            let total = cart.reduce((sum, item) => sum + item.price, 0);
+            let message = "¡Hola TecnoMarket! 👋 Quiero pedir:\n\n";
+            cart.forEach((item, index) => {
+                message += `${index + 1}. ${item.name} - S/ ${item.price}\n`;
+            });
+            message += `\n💰 *Total: S/ ${total}*`;
+
+            // Codificar para URL
+            wspLink.href = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
+        }
+    }
+
+    lucide.createIcons();
+</script>
+
+</body>
+</html>
